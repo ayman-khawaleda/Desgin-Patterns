@@ -1,18 +1,19 @@
 package DesignPattern;
 
-import DesignPattern.behavioral.StrategyPattern.*;
-import DesignPattern.behavioral.StrategyPattern.Character;
+
+import DesignPattern.behavioral.ObserverPattern.ForecastDisplay;
+import DesignPattern.behavioral.ObserverPattern.StatisticsDisplay;
+import DesignPattern.behavioral.ObserverPattern.ThirdPartyDisplay;
+import DesignPattern.behavioral.ObserverPattern.WeatherData;
 
 public class Main {
 
     public static void main(String[] args) {
-        Character king = new King();
-        king.setWeapon(new SwordBehavior());
-        king.fight();
-        Character queen = new Queen();
-        queen.setWeapon(new KnifeBehavior());
-        queen.fight();
-        king.setWeapon(new BowAndArrowBehavior());
-        king.fight();
+        var weatherData = new WeatherData();
+        var thirdPartyDisplay = new ThirdPartyDisplay(weatherData);
+        var statisticDisplay = new StatisticsDisplay(weatherData);
+        var forecastDisplay = new ForecastDisplay(weatherData);
+        weatherData.setMeasurement(15,35);
+        weatherData.setMeasurement(25,40);
     }
 }
