@@ -1,8 +1,18 @@
 package DesignPattern;
 
+import DesignPattern.behavioral.StrategyPattern.*;
+import DesignPattern.behavioral.StrategyPattern.Character;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello, World And Welcome To Design Pattern Project Based on Head First Design Pattern Book");
+        Character king = new King();
+        king.setWeapon(new SwordBehavior());
+        king.fight();
+        Character queen = new Queen();
+        queen.setWeapon(new KnifeBehavior());
+        queen.fight();
+        king.setWeapon(new BowAndArrowBehavior());
+        king.fight();
     }
 }
