@@ -1,19 +1,16 @@
 package DesignPattern;
 
 
-import DesignPattern.behavioral.ObserverPattern.ForecastDisplay;
-import DesignPattern.behavioral.ObserverPattern.StatisticsDisplay;
-import DesignPattern.behavioral.ObserverPattern.ThirdPartyDisplay;
-import DesignPattern.behavioral.ObserverPattern.WeatherData;
+import DesignPattern.Structurel.Decorator.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        var weatherData = new WeatherData();
-        var thirdPartyDisplay = new ThirdPartyDisplay(weatherData);
-        var statisticDisplay = new StatisticsDisplay(weatherData);
-        var forecastDisplay = new ForecastDisplay(weatherData);
-        weatherData.setMeasurement(15,35);
-        weatherData.setMeasurement(25,40);
+        Espresso espresso = new Espresso();
+        Mocha mocha = new Mocha(espresso);
+        Whip whip = new Whip(mocha);
+        var specialOrder = new Whip(new Milk(new Mocha(new Decaf())));
+        System.out.println(whip.getDescription()+"\nThe Cost: "+whip.getCost());
+        System.out.println(specialOrder.getDescription()+"\nThe Cost: "+specialOrder.getCost());
     }
 }
