@@ -1,16 +1,18 @@
 package DesignPattern;
 
 
-import DesignPattern.Structurel.Decorator.*;
+import DesignPattern.Structurel.Factory.ChicagoPizzaStore;
+import DesignPattern.Structurel.Factory.NYPizzaStore;
+import DesignPattern.Structurel.Factory.PizzaStore;
 
 public class Main {
 
     public static void main(String[] args) {
-        Espresso espresso = new Espresso();
-        Mocha mocha = new Mocha(espresso);
-        Whip whip = new Whip(mocha);
-        var specialOrder = new Whip(new Milk(new Mocha(new Decaf())));
-        System.out.println(whip.getDescription()+"\nThe Cost: "+whip.getCost());
-        System.out.println(specialOrder.getDescription()+"\nThe Cost: "+specialOrder.getCost());
+        PizzaStore nyPizzaStore = new NYPizzaStore();
+        var nyPizza = nyPizzaStore.orderPizza("cheese");
+        nyPizza.printDescription();
+        PizzaStore chicagoPizzaStore = new ChicagoPizzaStore();
+        var chicagoPizza = chicagoPizzaStore.orderPizza("veggie");
+        chicagoPizza.printDescription();
     }
 }
